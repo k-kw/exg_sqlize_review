@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type"
+      content="text/html; charset=UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <header>
+        <h1><%= title %></h1>
+    </header>
+    <div role="main">
+        <table class="table" table-layout: fixed; overflow-wrap : break-word; word-wrap: break-word;>
+            <tr>
+              
+              <th>製品名</th>
+              <td>製造社・販売社</td>
+              
+              <td>星</td>
+              <td>コメント</td>
+              <td>購入日</td>
+              <td>編集</td>
+              <td>削除</td>
+            </tr>
+            <% for(var i in content) { %>
+            <tr>
+              <% var obj = content[i]; %>
+              
+              <td><%= obj.Evtarget.name %></td>
+              <td><%= obj.Evtarget.manufac %></td>
+              <td><%= obj.star %></td>
+              <td><%= obj.comment %></td>
+              <td><%= obj.purchasedate.toDateString() %></td>
+              <td><a href="/review/edit?rvid=<%= obj.id %>">レビューを編集</a></td>
+              <td><a href="/review/del?rvid=<%= obj.id %>">削除</a></td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+    
+    <p class="mt-4"><a href="/target/search">既にレビューされている製品を検索・レビュー</a>
+    <p class="mt-4"><a href="/review/create">新しいレビューを作成</a></p>  
+    <p class="mt-4"><a href="/review/list">All reviews</a></p>  
+    <p class="mt-4"><a href="/usertop">User top</a></p>
+    <p class="mt-4"><a href="/signout">Sign out</a></p>
+  </body>
+</html>

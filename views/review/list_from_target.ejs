@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type"
+      content="text/html; charset=UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <header>
+        <h1><%= head1 %></h1>
+    </header>
+    <div role="main">
+        <p><a href="/review/add_from_target?tgid=<%= tgid %>">この製品にレビューを追加</a></p>
+        <table class="table" table-layout: fixed; overflow-wrap : break-word; word-wrap: break-word;>
+            <tr>
+              <td>投稿者</td>
+              <td>星</td>
+              <td>コメント</td>
+              <td>購入日</td>
+            </tr>
+            <% for(var i in content) { %>
+            <tr>
+              <% var obj = content[i]; %>
+              <td><a href="/user/profile?userid=<%= obj.User.id %>">
+                <%= obj.User.name %>
+              </a></td>
+              <td><%= obj.star %></td>
+              <td><%= obj.comment %></td>
+              <td><%= obj.purchasedate.toDateString() %></td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+    
+    <p class="mt-4"><a href="/target/search">既にレビューされている製品を検索・レビュー</a>
+    <p class="mt-4"><a href="/review/create">新しいレビューを作成</a></p>
+    <p class="mt-4"><a href="/review/user_list">Your reviews</a></p>
+    <p class="mt-4"><a href="/review/list">All reviews</a></p>  
+    <p class="mt-4"><a href="/usertop">User top</a></p>
+    <p class="mt-4"><a href="/signout">Sign out</a></p>
+  </body>
+</html>

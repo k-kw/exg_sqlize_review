@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type"
+      content="text/html; charset=UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <header>
+        <h1><%= title %></h1>
+        <h1><%- head1 %></h1>
+    </header>
+    
+    <form action="/review/edit?rvid=<%= rvid %>" method="post">
+        <label>製品名</label>
+        <input required type="text" name="name" value="<%= form_default.name %>" class="form-control"/>
+        <br>
+        <label>製造社/販売社</label>
+        <input required type="text" name="manufac" value="<%= form_default.manufac %>" class="form-control"/>
+        <br>
+        <label>星(半角数字)</label>
+        <input required type="integer" name="star" value="<%= form_default.star %>" class="form-control"/>
+        <br>
+        <label>コメント</label>
+        <input required type="text" name="comment" value="<%= form_default.comment %>" class="form-control"/>
+        <br>
+        <label>購入日(編集前: <%= form_default.purchasedate %>)</label>
+        <input required type="date" name="purchasedate" value="<%= form_default.purchasedate %>" class="form-control"/>
+        <br>
+        <input type="submit" value="Submit review."/>
+    </form>
+    <p class="mt-4"><a href="/review/user_list">Your reviews</a></p>
+    <p class="mt-4"><a href="/review/list">All reviews</a></p>  
+    <p class="mt-4"><a href="/usertop">User top</a></p>
+    <p class="mt-4"><a href="/signout">Sign out</a></p>
+
+  </body>
+</html>

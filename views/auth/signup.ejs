@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" 
+          content="text/html; charset=UTF-8">
+        <title><%= title %></title>
+        <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+        <link rel='stylesheet' 
+          href='/stylesheets/style.css' />
+    </head>
+      
+    <body>
+        <header>
+            <h1 class="display-4">
+              <%= title %>
+            </h1>
+            <h1 class="display-4">
+                <%- errormsg %>
+            </h1>
+              
+        </header>
+
+        <form action="/signup" method="post">
+        <label>ユーザ名</label>
+        <input required type="text" name="name" value="<%= form_default.name %>" class="form-control"/>
+        <br>
+        <label>メールアドレス</label>
+        <input required type="text" name="mail" value="<%= form_default.mail %>" class="form-control"/>
+        <br>
+        <label>パスワード（４～５００文字）</label>
+        <input required type="password" name="pass" value="<%= form_default.pass %>" class="form-control"/>
+        <br>
+        <label>パスワード（確認用）</label>
+        <input required type="password" name="repass" value="<%= form_default.repass %>" class="form-control"/>
+        <br>
+        <input type="submit" value="Sign up"/>
+        </form>
+
+
+        <p class="mt-4"><a href="/top">Top</a></p>
+    </body>
+</html>

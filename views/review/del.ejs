@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type"
+      content="text/html; charset=UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <header>
+        <h1><%= head1 %></h1>
+        <h2><a href="/review/del/exe?rvid=<%= content.id %>">削除</a></h2>
+    </header>
+    <div role="main">
+        <table class="table" table-layout: fixed; overflow-wrap : break-word; word-wrap: break-word;>
+            <tr>
+              
+              <th>製品名</th>
+              <td>製造社・販売社</td>
+              
+              <td>星</td>
+              <td>コメント</td>
+              <td>購入日</td>
+              
+            </tr>
+            
+            <tr>
+              <td><%= content.Evtarget.name %></td>
+              <td><%= content.Evtarget.manufac %></td>
+              
+              <td><%= content.star %></td>
+              <td><%= content.comment %></td>
+              <td><%= content.purchasedate.toDateString() %></td>
+              
+            </tr>
+           
+        </table>
+    </div>
+    <p class="mt-4"><a href="/review/user_list">Your reviews</a></p>
+    <p class="mt-4"><a href="/review/list">All reviews</a></p>  
+    <p class="mt-4"><a href="/usertop">User top</a></p>
+    <p class="mt-4"><a href="/signout">Sign out</a></p>
+  </body>
+</html>

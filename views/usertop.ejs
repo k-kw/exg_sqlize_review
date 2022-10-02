@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type"
+      content="text/html; charset=UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <header>
+        <h1><%= title %></h1>
+    </header>
+    <div role="main">
+        <p><%- content %></p>
+    </div>
+
+    <p class="mt-4"><a href="/target/search">既にレビューされている製品を検索・レビュー</a>
+    <p class="mt-4"><a href="/review/create">新しいレビューを作成</a></p>  
+    <p class="mt-4"><a href="/review/user_list">Your reviews</a></p>
+    <p class="mt-4"><a href="/review/list">All reviews</a></p>  
+    <p class="mt-4"><a href="/signout">Sign out</a></p>
+    
+
+  </body>
+</html>
