@@ -6,7 +6,7 @@ const db = require('../../models/index');
 
 router.get('/', (req, res, next)=> {
     var data={
-        title:'Sign in',
+        title:'ログイン',
         errormsg:req.flash('error')
     };
     res.render('auth/signin', data);

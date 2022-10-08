@@ -7,7 +7,7 @@ const my_funcs = require('../../my_funcs/my_funcs');
 
 router.get('/', (req, res, next)=> {
     var data={
-        title:'Sign up',
+        title:'ユーザ登録',
         errormsg:'',
         form_default: {
             name:"ユーザ名（１～１００文字）",
@@ -39,7 +39,7 @@ router.post('/', [
         result += '</ul>';
 
         var data = {
-            title: 'Sign up',
+            title: 'ユーザ登録',
             errormsg: result,
             form_default: req.body
         }
@@ -59,12 +59,12 @@ router.post('/', [
             // nameの重複check
             if(cnt!=0){
                 console.log('Already this name exist, so user must change name.');
-                errormsg=errormsg+'this name already exist. ';
+                errormsg=errormsg+'この名前は既に使われています。';
                 flg=false;
             }
             // passwordが確認用と等しいかcheck
             if(req.body.pass!=req.body.repass){
-                errormsg=errormsg+'password are not match. ';
+                errormsg=errormsg+'確認用とパスワードが一致しません。';
                 flg=false;
             }
 
@@ -72,7 +72,7 @@ router.post('/', [
             if(!flg){
                 console.log(errormsg);
                 var data={
-                    title:'Sign up',
+                    title:'ユーザ登録',
                     errormsg:errormsg,
                     form_default: req.body
                 }
@@ -84,7 +84,7 @@ router.post('/', [
             db.sequelize.sync()
             .then(async () => db.User.create({
                 name: req.body.name,
-                pass: await bcrypt.hash(req.body.pass, 10),
+                pass: await bcrypt.hash(req.body.pass, Number(process.env.SALT_ROUNDS)),
                 mail: req.body.mail
             })
             .then((usr) => {
@@ -100,7 +100,7 @@ router.post('/', [
                 var result = my_funcs.collect_err_msg(err);
 
                 var data={
-                    title: 'Sign up',
+                    title: 'ユーザ登録',
                     errormsg: result,
                     form_default: req.body
                 }

@@ -32,7 +32,7 @@ module.exports = function (app) {
             }
         }).then(async (user) => {
             if(user==null){
-                const msg='user that has such name do not exist in my database. ';
+                const msg='ユーザ名もしくはパスワードが一致しません。';
                 console.log(msg);
                 return done(null, false, {message: msg});
             }
@@ -42,7 +42,7 @@ module.exports = function (app) {
                 return done(null, user);
             }
             else{
-                const msg="password-callate error.";
+                const msg="ユーザ名もしくはパスワードが一致しません。";
                 console.log(msg);
                 return done(null, false, {message:msg});
             }
@@ -52,7 +52,7 @@ module.exports = function (app) {
 
     // express session option
     var session_opt={
-        secret: 'hashkey',
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         //1時間はsession 有効
